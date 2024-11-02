@@ -4,6 +4,9 @@ import { formatDate } from '../utils/functions';
 import { PROGRAMMING_LANGUAGES } from '../utils/constants';
 
 const Repo = ({ repo }) => {
+  if (!repo) {
+    return <p>Loading profile...</p>;
+  }
   const formattedDate = formatDate(repo.created_at);
   return (
     <li className="mb-10 ms-7">
