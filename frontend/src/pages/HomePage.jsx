@@ -4,6 +4,7 @@ import Repos from '../components/Repos';
 import Search from '../components/Search';
 import SortRepos from '../components/SortRepos';
 import toast from 'react-hot-toast';
+import Spinner from '../components/Spinner';
 
 const HomePage = () => {
   const [userProfile, setUserProfile] = useState(null);
@@ -44,8 +45,11 @@ const HomePage = () => {
       <Search />
       <SortRepos />
       <div className="flex gap-4 flex-col lg:flex-row justify-center items-start">
-        <ProfileInfo userProfile={userProfile} />
-        <Repos />
+        {userProfile && !loading && <ProfileInfo userProfile={userProfile} />}
+
+        {repos.length > 0 && !loading && <Repos repos={repos} />}
+
+        {loading && <Spinner />}
       </div>
     </div>
   );
