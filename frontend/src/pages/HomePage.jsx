@@ -44,7 +44,7 @@ const HomePage = () => {
       <Search />
       <SortRepos />
       <div className="flex gap-4 flex-col lg:flex-row justify-center items-start">
-        <ProfileInfo />
+        <ProfileInfo userProfile={userProfile} />
         <Repos />
       </div>
     </div>
