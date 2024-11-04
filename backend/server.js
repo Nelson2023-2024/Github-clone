@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { userRoutes } from './routes/user.route.js';
 import { exploreRoutes } from './routes/explore.route.js';
+import { connectMongoDB } from './db/connectToMongoDB.js';
 configDotenv();
 
 const app = express();
@@ -15,4 +16,5 @@ app.use('/api/explore', exploreRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on PORT http://localhost:${PORT}`);
+  connectMongoDB();
 });
