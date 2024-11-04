@@ -29,7 +29,12 @@ router.get('/check-auth-user', (req, res, next) => {
 });
 
 router.get('/logout', (req, res) => {
-  res.session().destroy((err) => res.json({ message: 'Loged out' }));
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).json({ message: 'Error logging out' });
+    }
+    res.json({ message: 'Logged out' });
+  });
 });
 
 export { router as authRoutes };
