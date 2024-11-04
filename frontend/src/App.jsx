@@ -8,8 +8,10 @@ import LikesPage from './pages/LikesPage';
 import Sidebar from './components/Sidebar';
 import { useAuthContext } from '../context/AuthContext';
 const App = () => {
-  const { authUser } = useAuthContext(); //authUser, setAuthUser
+  const { authUser, loading } = useAuthContext(); //authUser, setAuthUser
   console.log('Autheniticated User', authUser);
+
+  if (loading) return null;
   return (
     <div className="flex text-white">
       <Sidebar />
