@@ -16,10 +16,11 @@ const ExplorePage = () => {
 
     try {
       const response = await fetch(
-        `https://api.github.com/search/repositories?q=language:${language}&sort=stars&order=desc&per_page=10`
+        `http://localhost:5001/api/explore/repos/${language}`
       );
-      const data = await response.json();
-      setRepos(data.items);
+      const { repos } = await response.json();
+      setRepos(repos.items);
+      console.log(repos.items);
     } catch (error) {
       toast.error(error.message);
     } finally {

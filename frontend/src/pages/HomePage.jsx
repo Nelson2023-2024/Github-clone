@@ -17,14 +17,14 @@ const HomePage = () => {
     async (username = 'Nelson2023-2024') => {
       setLoading(true);
       try {
-        const userResponse = await fetch(
-          `https://api.github.com/users/${username}`
+        const response = await fetch(
+          `http://localhost:5001/api/users/profile/${username}`
         );
-        const userProfile = await userResponse.json();
+        if (!response.ok) throw new Error('Failed to fetch user profile');
+
+        const { repos, userProfile } = await response.json();
         setUserProfile(userProfile);
 
-        const repoRes = await fetch(userProfile?.repos_url);
-        const repos = await repoRes.json();
         repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); //descending
         setRepos(repos);
 
