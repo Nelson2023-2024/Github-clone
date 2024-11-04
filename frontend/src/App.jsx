@@ -6,7 +6,10 @@ import SignupPage from './pages/SignupPage';
 import ExplorePage from './pages/ExplorePage';
 import LikesPage from './pages/LikesPage';
 import Sidebar from './components/Sidebar';
+import { useAuthContext } from '../context/AuthContext';
 const App = () => {
+  const { authUser } = useAuthContext(); //authUser, setAuthUser
+  console.log('Autheniticated User', authUser);
   return (
     <div className="flex text-white">
       <Sidebar />
