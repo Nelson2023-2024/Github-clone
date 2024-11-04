@@ -20,5 +20,16 @@ router.get(
     res.redirect(process.env.CLIENT_BASE_URL);
   }
 );
+router.get('/check-auth-user', (req, res, next) => {
+  if (req.isAuthenticated()) {
+    res.send({ user: req.user });
+  } else {
+    res.send({ user: null });
+  }
+});
+
+router.get('/logout', (req, res) => {
+  res.session().destroy((err) => res.json({ message: 'Loged out' }));
+});
 
 export { router as authRoutes };
