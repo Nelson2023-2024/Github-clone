@@ -1,6 +1,9 @@
 import { Router } from 'express';
+import { ensureAuthenticated } from '../middleware/ensureAuthenticated.js';
 
 const router = Router();
+
+router.use(ensureAuthenticated);
 
 router.get('/repos/:language', async (req, res) => {
   const { language } = req.params;

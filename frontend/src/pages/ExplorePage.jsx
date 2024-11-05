@@ -15,9 +15,7 @@ const ExplorePage = () => {
     setSelectedLanguage(language); // Set the selected language when exploring
 
     try {
-      const response = await fetch(
-        `http://localhost:5001/api/explore/repos/${language}`
-      );
+      const response = await fetch(`/api/explore/repos/${language}`);
       const { repos } = await response.json();
       setRepos(repos.items);
       console.log(repos.items);

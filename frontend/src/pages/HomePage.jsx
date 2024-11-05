@@ -17,9 +17,7 @@ const HomePage = () => {
     async (username = 'Nelson2023-2024') => {
       setLoading(true);
       try {
-        const response = await fetch(
-          `http://localhost:5001/api/users/profile/${username}`
-        );
+        const response = await fetch(`/api/users/profile/${username}`);
         if (!response.ok) throw new Error('Failed to fetch user profile');
 
         const { repos, userProfile } = await response.json();
