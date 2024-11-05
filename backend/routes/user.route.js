@@ -42,7 +42,7 @@ router.get('/likes', async (req, res) => {
     res.status(200).json({ error: 'Internal server error' });
   }
 });
-router.post('/like/username', async (req, res) => {
+router.post('/like/:username', async (req, res) => {
   try {
     const { username } = req.params;
 
@@ -73,7 +73,7 @@ router.post('/like/username', async (req, res) => {
     res.status(200).json({ message: 'User Liked successfully' });
   } catch (error) {
     console.log('Error in the Liked Controller', error.mesage);
-    res.status(500).json({ error: 'error.message' });
+    res.status(500).json({ error: 'Internal Server error' });
   }
 });
 
